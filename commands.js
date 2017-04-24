@@ -1,5 +1,5 @@
 var fs = require('fs');
-var chalk = require('./node_modules/chalk');
+var chalk = require('chalk');
 
 module.exports = {
   pwd: function() {
@@ -18,20 +18,20 @@ module.exports = {
     } else if(str === '$HOME') {
       process.stdout.write(process.env.HOME);
     } else if(str === '$PWD') {
-    //   process.stdout.write(process.env.PWD);
-    // } else if(str === '$DISPLAY') {
-    //   process.stdout.write(process.env.DISPLAY);
-    // } else if(str === '$LD_LIBRARY_PATH') {
-      // process.stdout.write(process.env.LD_LIBRARY_PATH);
+      process.stdout.write(process.env.PWD);
     } else if(str === '$LANG') {
       process.stdout.write(process.env.LANG);
-    // } else if(str === '$TZ') {
-    //   process.stdout.write(process.env.TZ);
-  }
-
-    else {
+    } else {
       process.stdout.write(str);
     }
+    process.stdout.write('\nprompt > ');
+  },
+
+  date: function() {
+    var d = new Date;
+    var months = ['Jan','Feb','Mar','Apr','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    process.stdout.write(days[d.getDay()] + ' ' + months[d.getMonth()] + ' ' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds() + ' ' + 'EDT' + ' ' + d.getFullYear());
     process.stdout.write('\nprompt > ');
   }
 }

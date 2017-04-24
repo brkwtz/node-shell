@@ -1,12 +1,16 @@
 var commands = require('./commands');
-var chalk = require('./node_modules/chalk');
+var chalk = require('chalk');
 
 process.stdout.write('prompt > ');
 
 process.stdin.on('data', function(data) {
   var args = data.toString().trim();
-  var cmd = args.slice(0, args.indexOf(' '));
-  var cmdArgs = args.slice(args.indexOf(' ')+1);
+  if(args.split(' ').length > 1) {
+    var cmd = args.slice(0, args.indexOf(' '));
+    var cmdArgs = args.slice(args.indexOf(' ')+1);
+  } else {
+    cmd = args;
+  }
 
   if(cmd === 'pwd') {
     commands.pwd();
@@ -18,6 +22,10 @@ process.stdin.on('data', function(data) {
 
   if(cmd === 'echo') {
     commands.echo(cmdArgs);
+  }
+
+  if(cmd === 'date') {
+    commands.date();
   }
 
 });
