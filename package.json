@@ -1,0 +1,22 @@
+{
+  "name": "node-shell",
+  "version": "1.0.0",
+  "description": "'bash shell simulation'",
+  "main": "bash.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brkwtz/node-shell.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brkwtz/node-shell/issues"
+  },
+  "homepage": "https://github.com/brkwtz/node-shell#readme",
+  "dependencies": {
+    "chalk": "^1.1.3"
+  }
+}

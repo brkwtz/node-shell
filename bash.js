@@ -1,17 +1,23 @@
-// process.stdout.write('prompt > ');
+var commands = require('./commands');
+var chalk = require('./node_modules/chalk');
 
-// process.stdin.on('data', function(data) {
-//   var cmd = data.toString().trim();
+process.stdout.write('prompt > ');
 
-//   process.stdout.write('You typed: ' + cmd);
-//   process.stdout.write('\nprompt > ');
-// });
+process.stdin.on('data', function(data) {
+  var args = data.toString().trim();
+  var cmd = args.slice(0, args.indexOf(' '));
+  var cmdArgs = args.slice(args.indexOf(' ')+1);
 
+  if(cmd === 'pwd') {
+    commands.pwd();
+  }
 
-// process.stdout.write('prompt > ');
+  if(cmd === 'ls') {
+    commands.ls();
+  }
 
-// process.stdin.on('data', function(data) {
+  if(cmd === 'echo') {
+    commands.echo(cmdArgs);
+  }
 
-// })
-
-console.log(process.hrtime.toString());
+});
